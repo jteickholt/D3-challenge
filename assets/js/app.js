@@ -1,3 +1,12 @@
+////////////////////////////////////////////////////////////////////////////////////////
+/// This script is for the required portion of the homework.  The index.html references
+/// it in line 57.
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+/// This first section sets up the charting area
+///////////////////////////////////////////////////////////////////////////////////////
 
 // Define svg element width and height
 var svgWidth = 960;
@@ -26,6 +35,10 @@ var svg = d3.select("#scatter")
 var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
+////////////////////////////////////////////////////////////////////////////////////////
+/// This next section reads in the data and creates the chart
+///////////////////////////////////////////////////////////////////////////////////////
+
 // Read in data from csv file
 d3.csv("./assets/data/data.csv").then(function(healthData) {
     var stateAbbr = healthData.map(data => data.abbr);
@@ -41,12 +54,12 @@ d3.csv("./assets/data/data.csv").then(function(healthData) {
     });
 
     // Define x and y scales based on the poverty and healthcare data
-    // I add 2 to the max to extend the scale a bit, so I can match the solution chart
+    // I add 2 to the max to extend the scale a bit, so I can match the solution chart axis
     var xLinearScale = d3.scaleLinear()
       .domain([8, d3.max(healthData, d => d.poverty)+2])
       .range([0, chartWidth]);
 
-    // I add 2 to the max to extend the scale a bit, so I can match the solution chart
+    // I add 2 to the max to extend the scale a bit, so I can match the solution chart axis
     var yLinearScale = d3.scaleLinear()
       .domain([4, d3.max(healthData, d => d.healthcare)+2])
       .range([chartHeight, 0]);
@@ -74,6 +87,7 @@ d3.csv("./assets/data/data.csv").then(function(healthData) {
       .attr("r", "9")
       .attr("fill", "lightblue")
       .attr("opacity", "1");
+
 
     // Add the x-axis label
     chartGroup.append("text")
@@ -109,6 +123,7 @@ d3.csv("./assets/data/data.csv").then(function(healthData) {
         .attr("dominant-baseline", "central")
         .attr("y", d => yLinearScale(d.healthcare))
         .attr("x", d => xLinearScale(d.poverty))
+        .classed("state-abbr", true)
         .text(d => d.abbr);
 
     
