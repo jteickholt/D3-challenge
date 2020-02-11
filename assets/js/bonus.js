@@ -85,7 +85,8 @@ function updateToolTip(chosenXAxis, circlesGroup) {
   
     var toolTip = d3.tip()
       .attr("class", "tooltip")
-      .offset([80, -60])
+      .offset([40, -40])
+      .attr("fill-color","white")
       .html(function(d) {
         return (`${d.state}<br>${label} ${d[chosenXAxis]}`);
       });
