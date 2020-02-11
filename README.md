@@ -7,7 +7,7 @@
   for the required portion of the homework.  Line 58 is commented out, but it references the bonus.js script, which
   was an attempt at the bonus portion of the homework.
   
-#### Sub-folders:  assets contains the following folders:
+#### Sub-folders:  assets folder contains the following folders:
   1.  css:  Contains the style sheets provided.
   2.  data:  Contains the data that was provided.
   3.  js:  Contains the following:
